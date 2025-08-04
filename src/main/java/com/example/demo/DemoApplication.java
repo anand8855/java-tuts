@@ -12,17 +12,54 @@ public class DemoApplication {
 		System.out.println("============================================");
 
 		// arr();
-		patternstar(5);
+		// patternstar(5);
+		bubbleRotate(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }, 3);
 
 	}
 
-	public static void patternstar(int a){
-			for (int i = 0; i < a; i++) {
-				for(int j = a; j <= 0; j--){
-					System.out.print("* ");
-				}
-				System.out.println();
+	public static void bubbleRotate(int[] arr, int p) {
+		for (int i = 0; i < p; i++) {
+			for (int j = arr.length - 1; j > 0; j--) {
+				int temp = arr[j];
+				arr[j] = arr[j - 1];
+				arr[j - 1] = temp;
 			}
+		}
+		for (int i : arr) {
+			System.out.print(i + " ");
+		}
+	}
+
+	public static void rotateArr(int[] arr, int p) {
+		if (p > arr.length) {
+			p = p % arr.length;
+		}
+
+		int[] res = new int[arr.length];
+
+		for (int i = 0; i < p; i++) {
+			res[i] = arr[arr.length - p + i];
+		}
+
+		for (int i = p, j = 0; i < arr.length; i++, j++) {
+			res[i] = arr[j];
+		}
+
+		System.arraycopy(res, 0, arr, 0, arr.length);
+
+		for (int i : arr) {
+			System.out.print(i + " ");
+		}
+
+	}
+
+	public static void patternstar(int a) {
+		for (int i = 0; i < a; i++) {
+			for (int j = a; j <= 0; j--) {
+				System.out.print("* ");
+			}
+			System.out.println();
+		}
 	}
 
 	public static void arr() {
